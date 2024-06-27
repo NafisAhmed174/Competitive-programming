@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.erd": "json",
+        "*.vuerd": "json",
+        "tuple": "cpp",
+        "type_traits": "cpp"
+    }
+}
