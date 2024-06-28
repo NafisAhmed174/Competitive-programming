@@ -1,3 +1,8 @@
+// Initial values of
+// Alpha and Beta
+const int MAX = 1000;
+const int MIN = -1000;
+
 // Returns optimal value for
 // current player(Initially called
 // for root and maximizer)
