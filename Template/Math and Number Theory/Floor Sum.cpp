@@ -1,13 +1,18 @@
-// formula: floor sum upto n=2*floor sum upto k - k^2[k=sqrt(n)]
-ll floorSum(int n){
-    ll sum = 0;
-    ll k = sqrt(n);
-    // Summation of floor(n / i)
-    for (int i = 1; i <= k; i++) {
-        sum += Floor(n,i);
+// for i=0 to n-1 SUM(floor((a*i+b)/m))
+long long floor_sum(long long n, long long m, long long a, long long b) {  
+    long long ans = 0;
+    if (a >= m) {
+        ans += (n - 1) * n * (a / m) / 2;
+        a %= m;
     }
-    // From the formula
-    sum *= 2;
-    sum -= BigMod<ll>(k,2,LLONG_MAX);
-    return sum;
+    if (b >= m) {
+        ans += n * (b / m);
+        b %= m;
+    }
+ 
+    long long y_max = (a * n + b) / m, x_max = (y_max * m - b);
+    if (y_max == 0) return ans;
+    ans += (n - (x_max + a - 1) / a) * y_max;
+    ans += floor_sum(y_max, a, m, (a - x_max % a) % a);
+    return ans;
 }
